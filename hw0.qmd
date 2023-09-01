@@ -3,23 +3,42 @@ title: "hw0"
 format: html
 ---
 
-## Quarto
+Wanru Liu
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+8/30/2023
 
-## Running Code
+## Function Solution
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this 
+The roots of quadratic equations $f(x)=ax^2+bx+c=0$ for $a=1, b=-1, c=-2$ are solved below:
 
 ```{r}
 #| echo: false
-2 * 2
+quad<-function(a,b,c){
+    if(a==0&&b==0&&c==0){
+      roots<-NA
+      }
+  else if(a==0&&b==0){roots<-NULL} 
+  else if(a==0){roots<--c/b}
+  else {discrim<-b^2-4*a*c 
+  if(discrim>=0){roots<-(-b+c(1,-1)*sqrt(discrim))/(2*a)}
+  else {roots<-NULL}}
+  
+  return(roots)
+}
+
+quad(a=1,b=3,c=2)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Graph of the Function
+
+The graph of the function $f(x)=ax^2+bx+c=0$ for $a=1, b=-1, c=-2$ is shown below to verify the roots that have been solved in the previous section:
+
+```{r}
+#| echo: false
+a <- 1
+b <- 3
+c <- 2
+x <- seq(-5, 5, length = 300)
+plot(x, a*x^2 + b*x + c, type = "l")
+abline(h = 0, lty = 2)
+```
